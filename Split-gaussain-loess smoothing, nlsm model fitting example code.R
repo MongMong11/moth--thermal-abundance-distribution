@@ -17,14 +17,14 @@ split.Gaussian<-function(Temperature, p.max, temp.opt, sigma.max, sigma.min){
 }
 
 #loess testing
-data.use<-data5[Species=="NOC034"]
-data.name <-data.use$Temperature
+data_ex<-DT[Species=="NOC034"]
+data_temp <-data_ex$Temperature
 
-test<-loess(N~Temperature, data=data.use,span=0.8)
-test.pred<-predict(test, data.frame(Temperature=seq(min(range(data.name)),max(range(data.name)),by=0.1)))
-test.pred.dataframe<-data.frame(Temperature=seq(min(range(data.name)),max(range(data.name)),by=0.1),test.pred=test.pred)
+test<-loess(N~Temperature, data_ex, span=0.8)
+test.pred<-predict(test, data.frame(Temperature=seq(min(range(data_temp)),max(range(data_temp)),by=0.1)))
+test.pred.dataframe<-data.frame(Temperature=seq(min(range(data_temp)),max(range(data_temp)),by=0.1),test.pred=test.pred)
 
-ggplot(data = data.use, aes(x = Temperature, y = N))+
+ggplot(data = data_ex, aes(x = Temperature, y = N))+
   geom_point(shape = 1)
 
 #ggplot2-loess
