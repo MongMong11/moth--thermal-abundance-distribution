@@ -3,9 +3,9 @@ library(eHOF)
 library(ggplot2)
 library(flexmix)
 
-data5<- data.table::fread('C:/Moth/Thermal_bundance_shape/table/data5.csv')
+DT<- data.table::fread('table/data.csv')
 data_model_type<-data.table::fread('C:/Moth/Thermal_bundance_shape/table/230804_eHOF_fit4.csv')
-sel <- unique(data5$Species)
+sel <- unique(DT$Species)
 table<-data.frame(matrix(NA,length(sel),8))
 colnames(table)<-c("species","sample_size","model_type","G1_skewness", "Critical_value_5", "Critical_value_10", "Shape_type_5", "Shape_type_10")
 table[,1]<-sel
