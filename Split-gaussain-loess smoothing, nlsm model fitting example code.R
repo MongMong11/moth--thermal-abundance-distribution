@@ -1,15 +1,14 @@
 #temperatrue-split gaussian
 
-#import:transformed data which contain Species, Temperature, N(individuals)
-
-data5<- data.table::fread('C:/Moth 2021/Data ananlyzed/table/data.csv')
-
-
 #library
-library("data.table")
-library("dplyr")
-library("ggplot2")
-library("minpack.lm")
+library(data.table)
+library(tidyverse)
+library(ggplot2)
+library(minpack.lm)
+
+#import:transformed data which contain Species, Temperature, N(individuals)
+DT<- data.table::fread("data.csv" ,encoding = "UTF-8", colClasses = "character")
+DT<-DT %>% select(Species, Temperature, N)
 
 #temp.
 split.Gaussian<-function(Temperature, p.max, temp.opt, sigma.max, sigma.min){
